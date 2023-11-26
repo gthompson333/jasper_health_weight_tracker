@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044341798763",
+    "project_id": "jasper-health-weight-tracker",
+    "storage_bucket": "jasper-health-weight-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044341798763:android:87f75f514f5a96f688fe2e",
+        "android_client_info": {
+          "package_name": "com.gthompson333.weight_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvfQ1CzUOZX08jJml55XjAh2UneUQpSmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
