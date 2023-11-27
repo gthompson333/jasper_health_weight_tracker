@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'data_models/weight.dart';
 
-class DataRepository {
+class JasperFSData {
   final CollectionReference collection =
       FirebaseFirestore.instance.collection('weights');
 
@@ -14,10 +14,10 @@ class DataRepository {
   }
 
   void updateWeight(Weight weight) async {
-    await collection.doc(weight.referenceId).update(weight.toJson());
+    //await collection.doc(weight.referenceId).update(weight.toJson());
   }
 
   void deleteweight(Weight weight) async {
-    await collection.doc(weight.referenceId).delete();
+    //await collection.doc(weight.referenceId).delete();
   }
 }

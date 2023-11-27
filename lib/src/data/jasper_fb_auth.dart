@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
-class JasperAuth {
+class JasperFBAuth {
+  static User? user;
   static Future<User?> signInAnonymously() async {
-    User? user;
-
     try {
       final userCredential = await FirebaseAuth.instance.signInAnonymously();
       debugPrint('User signed in with temporary anonymous account.');
@@ -19,5 +18,9 @@ class JasperAuth {
       }
     }
     return user;
+  }
+
+  static signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

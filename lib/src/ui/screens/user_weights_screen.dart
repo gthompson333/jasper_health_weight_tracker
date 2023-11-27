@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../data/data_models/weight.dart';
-import '../../data/data_repository.dart';
+import '../../data/jasper_fs_data.dart';
 import '../widgets/weight_card.dart';
 
-class WeightList extends StatefulWidget {
-  const WeightList({super.key});
+class UserWeightsScreen extends StatefulWidget {
+  const UserWeightsScreen({super.key});
 
   @override
-  WeightListState createState() => WeightListState();
+  UserWeightsScreenState createState() => UserWeightsScreenState();
 }
 
-class WeightListState extends State<WeightList> {
-  final DataRepository repository = DataRepository();
+class UserWeightsScreenState extends State<UserWeightsScreen> {
+  final JasperFSData repository = JasperFSData();
 
   @override
   Widget build(BuildContext context) {
