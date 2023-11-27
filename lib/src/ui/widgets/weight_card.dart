@@ -9,18 +9,12 @@ class WeightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: InkWell(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-              child: Text('${weight.weight}'),
-            ),
-          ),
-        ],
+      child: ListTile(
+        title: Text('${weight.weight}',
+            style: Theme.of(context).textTheme.bodyLarge),
+        trailing: Text(weight.formattedDateTime(),
+            style: Theme.of(context).textTheme.bodyMedium),
       ),
-    ));
+    );
   }
 }

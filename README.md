@@ -8,8 +8,8 @@ Project Brief – Weight Tracker
 Implement a simple weight tracker app using Firebase Auth and Cloud Firestore
 
 Required Features:
-On first launch, the app lets users sign-in with Firebase – use anonymous sign-in for simplicity.
-After sign-in, the app shows a page where the user can:
+-On first launch, the app lets users sign-in with Firebase – use anonymous sign-in for simplicity.
+-After sign-in, the app shows a page where the user can:
 
 Enter their weight into a form and submit it
 ○ Save this along with the current time into Firestore
@@ -17,7 +17,8 @@ Enter their weight into a form and submit it
 View a list of all weight entries, sorted by most recent date. The app should update in real-time when data changes in Firestore. 
 
 Bonus Features:
-Edit an existing weight-entry Delete entries
+Edit an existing weight-entry 
+Delete entries
 Sign-out functionality
 
 Notes

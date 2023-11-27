@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jasper_health_weight_tracker/src/data/jasper_fb_auth.dart';
+import 'package:intl/intl.dart';
 
 /// Represents a single weight record from Cloud Firestore.
 class Weight {
@@ -17,6 +18,11 @@ class Weight {
   factory Weight.fromJson(Map<String, dynamic> json) => _weightFromJson(json);
 
   Map<String, dynamic> toJson() => _weightToJson(this);
+
+  // Note: In a more complex app, this would be done in a view model layer.
+  String formattedDateTime() {
+    return DateFormat('MMMM dd yyyy hh:mm aaa').format(timestamp);
+  }
 }
 
 // Private interface.

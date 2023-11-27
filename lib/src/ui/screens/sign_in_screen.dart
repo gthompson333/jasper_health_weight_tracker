@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../data/jasper_fb_auth.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -14,11 +13,7 @@ class SignInScreen extends StatelessWidget {
         body: Center(
           child: ElevatedButton(
             onPressed: () async {
-              User? user = await JasperFBAuth.signInAnonymously();
-
-              if (user != null) {
-                debugPrint('User successfully signed in: ${user.uid}');
-              }
+              await JasperFBAuth.signInAnonymously();
             },
             child: const Text(
               'Sign In',
