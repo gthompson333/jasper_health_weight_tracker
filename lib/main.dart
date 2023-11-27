@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:jasper_health_weight_tracker/src/ui/screens/weight_list.dart';
-
+import 'package:jasper_health_weight_tracker/src/ui/screens/sign_in_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -21,6 +20,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const WeightList());
+        home: const SignInScreen());
   }
 }
