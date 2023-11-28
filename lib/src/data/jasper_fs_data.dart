@@ -1,23 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:jasper_health_weight_tracker/src/data/jasper_fb_auth.dart';
 import 'data_models/weight.dart';
 
 class JasperFSData {
-  final CollectionReference collection =
-      FirebaseFirestore.instance.collection('weights');
+  final weightsCollection = FirebaseFirestore.instance.collection("weights");
 
-  Stream<QuerySnapshot> getStream() {
-    return collection.snapshots();
+  Stream<QuerySnapshot> getWeights() {
+    return weightsCollection
+        .where("userid", isEqualTo: JasperFBAuth.user?.uid)
+        .orderBy('timestamp')
+        .snapshots();
   }
 
   Future<DocumentReference> addWeight(Weight weight) {
-    return collection.add(weight.toJson());
+    return weightsCollection.add(weight.toJson());
   }
 
   void updateWeight(Weight weight) async {
-    //await collection.doc(weight.referenceId).update(weight.toJson());
+    await weightsCollection.doc(weight.documentRefID).update(weight.toJson());
   }
 
-  void deleteweight(Weight weight) async {
-    //await collection.doc(weight.referenceId).delete();
+  void deleteWeight(Weight weight) async {
+    await weightsCollection.doc(weight.documentRefID).delete();
   }
 }

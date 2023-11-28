@@ -3,12 +3,17 @@ import '../../data/data_models/weight.dart';
 
 class WeightCard extends StatelessWidget {
   final Weight weight;
+  final VoidCallback onDelete;
 
-  const WeightCard({super.key, required this.weight});
+  const WeightCard({super.key, required this.weight, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Dismissible(
+      key: Key(weight.documentRefID),
+      onDismissed: (direction) {
+        onDelete();
+      },
       child: ListTile(
         title: Text('${weight.weight}',
             style: Theme.of(context).textTheme.bodyLarge),

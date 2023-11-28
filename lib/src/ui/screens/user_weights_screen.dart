@@ -20,16 +20,16 @@ class UserWeightsScreenState extends State<UserWeightsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: ElevatedButton(
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
           onPressed: () {
             JasperFBAuth.signOut();
           },
-          child: const Text('Sign Out'),
         ),
         title: const Text('Weights'),
       ),
       body: StreamBuilder<QuerySnapshot>(
-          stream: jasperFSData.getStream(),
+          stream: jasperFSData.getWeights(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const LinearProgressIndicator();
             return _buildListView(context, snapshot.data?.docs ?? []);
@@ -54,9 +54,12 @@ class UserWeightsScreenState extends State<UserWeightsScreen> {
   Widget _buildListView(BuildContext context, List<DocumentSnapshot> snapshot) {
     return ListView(
       padding: const EdgeInsets.only(top: 20.0),
-      children: snapshot
-          .map((data) => WeightCard(weight: Weight.fromSnapshot(data)))
-          .toList(),
+      children: snapshot.map((data) {
+        Weight weightItem = Weight.fromSnapshot(data);
+        return WeightCard(weight: weightItem, onDelete: () async {
+          jasperFSData.deleteWeight(weightItem);
+        });
+      }).toList(),
     );
   }
 }

@@ -4,40 +4,35 @@ import 'package:intl/intl.dart';
 
 /// Represents a single weight record from Cloud Firestore.
 class Weight {
-  late final int weight;
-  late final DateTime timestamp;
-  String userid;
+  final int weight;
+  final DateTime timestamp;
+  final String userID;
+  final String documentRefID;
 
   /// Public interface.
-  Weight({required this.weight, required this.timestamp, required this.userid});
+  Weight(
+      {required this.weight, required this.timestamp, required this.userID, required this.documentRefID});
 
   factory Weight.fromSnapshot(DocumentSnapshot snapshot) {
-    return Weight.fromJson(snapshot.data() as Map<String, dynamic>);
+    Map<String, dynamic> dataMap = snapshot.data() as Map<String, dynamic>;
+    return Weight(
+        weight: dataMap['weight'] as int,
+        timestamp: (dataMap['timestamp'] as Timestamp).toDate(),
+        userID: dataMap['userid'] as String,
+        documentRefID: snapshot.reference.id,
+    );
   }
 
-  factory Weight.fromJson(Map<String, dynamic> json) => _weightFromJson(json);
-
-  Map<String, dynamic> toJson() => _weightToJson(this);
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'weight': weight,
+      'userid': JasperFBAuth.user?.uid ?? '',
+      'timestamp': timestamp,
+    };
+  }
 
   // Note: In a more complex app, this would be done in a view model layer.
   String formattedDateTime() {
     return DateFormat('MMMM dd yyyy hh:mm aaa').format(timestamp);
   }
 }
-
-// Private interface.
-Weight _weightFromJson(Map<String, dynamic> json) {
-  return Weight(
-    weight: json['weight'] as int,
-    timestamp: (json['timestamp'] as Timestamp).toDate(),
-    userid: json['userid'] as String,
-  );
-}
-
-// Use the currently signed-in user id to send back up to Firestore when creating a new weight record.
-// This value is nullable, but in reality should never be null since the user is always signed in.
-Map<String, dynamic> _weightToJson(Weight instance) => <String, dynamic>{
-      'weight': instance.weight,
-      'userid': JasperFBAuth.user?.uid ?? '',
-      'timestamp': instance.timestamp,
-    };

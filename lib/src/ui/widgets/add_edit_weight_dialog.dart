@@ -34,7 +34,8 @@ class _AddEditWeightDialogState extends State<AddEditWeightDialog> {
                 widget.onSubmit(Weight(
                     weight: int.parse(value),
                     timestamp: DateTime.now(),
-                    userid: JasperFBAuth.user!.uid));
+                    userID: JasperFBAuth.user!.uid,
+                    documentRefID: ''));
               }
               Navigator.of(context).pop();
             },
