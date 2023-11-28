@@ -49,9 +49,6 @@ Open the Flutter project in your IDE of choice. I use Android Studio.
 Select either an Android emulator, iOS simulator, or web target.
 Hit the 'run' button or 'flutter run' in a command terminal window.
 
-# Demo video
-Within the Flutter project, you will find a video file which I recorded to demonstrate the app.
-
 # Design and Assumptions
 For this simple coding assessment project, I did not implement many features, such as input validation
 logic, that I would normally implement for a production-ready app.
