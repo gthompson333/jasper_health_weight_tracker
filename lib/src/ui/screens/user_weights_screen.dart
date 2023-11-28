@@ -56,9 +56,25 @@ class UserWeightsScreenState extends State<UserWeightsScreen> {
       padding: const EdgeInsets.only(top: 20.0),
       children: snapshot.map((data) {
         Weight weightItem = Weight.fromSnapshot(data);
-        return WeightCard(weight: weightItem, onDelete: () async {
-          jasperFSData.deleteWeight(weightItem);
-        });
+        return InkWell(
+          onTap: () {
+            showDialog(
+                context: context,
+                barrierDismissible: true,
+                builder: (BuildContext context) {
+                  return AddEditWeightDialog(
+                      weight: weightItem,
+                      onSubmit: (editedWeight) {
+                        jasperFSData.updateWeight(editedWeight);
+                      });
+                });
+          },
+          child: WeightCard(
+              weight: weightItem,
+              onDelete: () async {
+                jasperFSData.deleteWeight(weightItem);
+              }),
+        );
       }).toList(),
     );
   }

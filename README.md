@@ -14,7 +14,7 @@ Required Features:
 - Enter their weight into a form and submit it
 - Save this along with the current time into Firestore
 
-View a list of all weight entries, sorted by most recent date. The app should update in real-time when data changes in Firestore. 
+- View a list of all weight entries, sorted by most recent date. The app should update in real-time when data changes in Firestore. 
 
 Bonus Features:
 Edit an existing weight-entry 

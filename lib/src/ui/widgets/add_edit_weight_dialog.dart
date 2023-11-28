@@ -25,18 +25,29 @@ class _AddEditWeightDialogState extends State<AddEditWeightDialog> {
         child: Form(
           key: _formKey,
           child: TextFormField(
-            decoration: const InputDecoration(
-              labelText: 'Weight Value',
-            ),
+            initialValue: widget.weight != null
+                ? '${widget.weight?.weight}'
+                : 'Weight Value',
             onSaved: (String? value) {
               // Note: a production app would have much better input validation.
-              if (widget.weight == null && value != null && value.isNotEmpty) {
-                widget.onSubmit(Weight(
-                    weight: int.parse(value),
-                    timestamp: DateTime.now(),
-                    userID: JasperFBAuth.user!.uid,
-                    documentRefID: ''));
+              if (value != null && value.isNotEmpty) {
+                // We're creating a new weight entry.
+                if (widget.weight == null) {
+                  widget.onSubmit(Weight(
+                      weight: int.parse(value),
+                      timestamp: DateTime.now(),
+                      userID: JasperFBAuth.user!.uid,
+                      documentRefID: ''));
+                } else {
+                  // We're editing an existing weight entry.
+                  widget.onSubmit(Weight(
+                      weight: int.parse(value),
+                      timestamp: widget.weight!.timestamp,
+                      userID: widget.weight!.userID,
+                      documentRefID: widget.weight!.documentRefID));
+                }
               }
+
               Navigator.of(context).pop();
             },
           ),

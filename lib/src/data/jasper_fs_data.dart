@@ -8,7 +8,7 @@ class JasperFSData {
   Stream<QuerySnapshot> getWeights() {
     return weightsCollection
         .where("userid", isEqualTo: JasperFBAuth.user?.uid)
-        .orderBy('timestamp')
+        .orderBy('timestamp', descending: true)
         .snapshots();
   }
 
