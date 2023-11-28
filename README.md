@@ -1,44 +1,67 @@
-# jasper_health_weight_tracker
+# Jasper Health Weight Tracker
 
-A Flutter app for Jasper Health to track a user's weight.
+<p class='center'>
+The Jasper Health Weight Tracker app is a simple Flutter app that tracks a user's weight.
 
-## Getting Started
+The app utilizes Google's Firebase Auth and Cloud Firestore platforms to authorize users and
+store the weight data.
+</p>
 
-Project Brief – Weight Tracker
-Implement a simple weight tracker app using Firebase Auth and Cloud Firestore
+# Platform Support
 
-Required Features:
-- On first launch, the app lets users sign-in with Firebase – use anonymous sign-in for simplicity.
-- After sign-in, the app shows a page where the user can:
+| Android | iOS | web |
+| :-----: | :-: | :-: |
+|   ✅    | ✅ |  ✅ |
 
-- Enter their weight into a form and submit it
-- Save this along with the current time into Firestore
+# Features
 
-- View a list of all weight entries, sorted by most recent date. The app should update in real-time when data changes in Firestore. 
+On first launch, the app lets users sign-in with Firebase. 
+For simplicity, all sign-ins are anonymous.
 
-Bonus Features:
-Edit an existing weight-entry 
-- Delete entries
-- Sign-out functionality
+After sign-in, the app shows an empty weight entry list and a button to allow the user to enter a new weight entry
+and submit it for upload to Google Cloud Firestore.
 
-Notes
-● Feel free to use dependency injection libraries such as Provider or get_it, if appropriate
-● When building the UI and navigating between the views / screens, choose an approach that makes most sense in terms of usability
-● Adding tests are not required for this project, but the final code should be testable
+Along with the weight value, the entry time and date is recorded and sent up to Firestore, as well.
 
-Submission
-Please upload your project repository to Github or Gitlab. Your README.md should include the following details:
-● Set up instructions
-● Assumptions you made, if any
-● Video of working application
+All weight entries are associated with the logged-in user and only the logged-in user's weight entries
+will appear in the list.
 
-Email repository link to aly.sivji@hellojasper.com. If you are submitting a partial solution, please include a brief explanation of what you could not complete and why.
+All weight entries are sorted by recent date / time, with the most recent entry at the top of the list.
 
-Evaluation
-Your solution will be evaluated according to the following criteria:
-● The app works and satisfies the requirements outlined above
-● General project structure and organization of the code
-● Separation of concerns between UI, authentication, and database code
-● Simplicity - we do not require an over-engineered solution
-● Naming conventions for variables, functions, classes
-Making the UI look nice is not required as part of this task - legible text and usable UI is sufficient
+The app utilizes Google Cloud Firestore to update data in real-time, as the data changes.
+
+In addition, by tapping on an existing entry, the weight value can be edited and updated.
+
+By swiping an entry to the left, an entry can be deleted.
+
+In the upper, left of the app screen, is an icon button to allow the user to sign out.
+
+# To Build and Run
+
+To build and run the app, one need only clone the GitHub repo here:
+https://github.com/gthompson333/jasper_health_weight_tracker
+
+Open the Flutter project in your IDE of choice. I use Android Studio.
+Select either an Android emulator, iOS simulator, or web target.
+Hit the 'run' button or 'flutter run' in a command terminal window.
+
+# Demo video
+Within the Flutter project, you will find a video file which I recorded to demonstrate the app.
+
+# Design and Assumptions
+For this simple coding assessment project, I did not implement many features, such as input validation
+logic, that I would normally implement for a production-ready app.
+
+This app design is a simple two-layered architecture.
+A data layer with data model classes.
+A UI layer with screens and widgets.
+
+For a much larger, production-ready app, I would most likely include a view-model business layer
+which encapsulates business logic and rules, and also data formatting that is appropriate for
+the UI layer.
+
+In addition, I did not create any special UI theming, layout, or custom widgets, that I would normally
+would for a production-ready app.
+
+
+

@@ -27,7 +27,7 @@ class _AddEditWeightDialogState extends State<AddEditWeightDialog> {
           child: TextFormField(
             initialValue: widget.weight != null
                 ? '${widget.weight?.weight}'
-                : 'Weight Value',
+                : '',
             onSaved: (String? value) {
               // Note: a production app would have much better input validation.
               if (value != null && value.isNotEmpty) {
