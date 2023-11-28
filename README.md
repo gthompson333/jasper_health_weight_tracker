@@ -7,6 +7,10 @@ The app utilizes Google's Firebase Auth and Cloud Firestore platforms to authori
 store the weight data.
 </p>
 
+# Demo video
+A demo of the app can be seen in this video here:
+https://drive.google.com/file/d/1Fm1rp-kp6APT8kdNtnKdl-Cc9KRQfnvT/view
+
 # Platform Support
 
 | Android | iOS | web |
